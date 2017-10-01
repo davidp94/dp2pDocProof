@@ -1,3 +1,7 @@
 :local(.styles) {
-
+    :local(.rightElementClass) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
