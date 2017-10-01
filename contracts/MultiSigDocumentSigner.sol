@@ -19,7 +19,7 @@ contract MultiSigDocumentSigner {
         bool isSigned;
     }
     
-    
+    event ContractInit(address _contractAddress, address[] _authorities, uint _minSignature);
     event SignedDocument(bytes32 document, address signer);
     event UnsignedDocument(bytes32 document, address signer);
     event NotarizedDocument(bytes32 document);
@@ -47,11 +47,12 @@ contract MultiSigDocumentSigner {
     
     function MultiSigDocumentSigner(address[] _authorities, uint minSignature) {
         require(_authorities.length > 0);
-        require(minSignature > 0 && minSignature < _authorities.length);
+        require(minSignature > 0 && minSignature <= _authorities.length);
         for (uint i = 0; i < _authorities.length; i++) {
             authorities[address(_authorities[i])] = true;
         }
         requiredMinSignature = minSignature;
+        ContractInit(this, _authorities, minSignature);
     }
     
     
