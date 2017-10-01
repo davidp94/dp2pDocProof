@@ -29,6 +29,7 @@ function createButton(props) {
     icon,
     disabled,
     primary,
+    labelPosition,
     secondary } = props;
 
   let buttonElem;
@@ -40,6 +41,7 @@ function createButton(props) {
                   className={className}
                   icon={icon}
                   disabled={disabled}
+                  labelPosition={labelPosition}
                   secondary={true}>
                   {props.icon}
                  </FloatingActionButton>
@@ -50,6 +52,7 @@ function createButton(props) {
                   onTouchTap={onTouchTap}
                   className={className}
                   icon={icon}
+                  labelPosition={labelPosition}
                   disabled={disabled}
                   secondary={true} />
 
@@ -57,6 +60,7 @@ function createButton(props) {
     buttonElem= <IconButton
                   label={label}
                   onTouchTap={onTouchTap}
+                  labelPosition={labelPosition}
                   className={className}
                   disabled={disabled}
                   icon={icon}>{props.icon}</IconButton>;
@@ -66,6 +70,7 @@ function createButton(props) {
                   label={label}
                   onTouchTap={onTouchTap}
                   className={className}
+                  labelPosition={labelPosition}
                   icon={icon}
                   disabled={disabled}
                   secondary={true} />
@@ -75,6 +80,7 @@ function createButton(props) {
                   label={label}
                   className={className}
                   onTouchTap={onTouchTap}
+                  labelPosition={labelPosition}
                   primary={primary}
                   secondary={secondary}
                   disabled={disabled} />
@@ -82,6 +88,7 @@ function createButton(props) {
     buttonElem = <FlatButton
                   onTouchTap={onTouchTap}
                   className={className}
+                  labelPosition={labelPosition}
                   icon={icon}
                   disabled={disabled} />
   } else {
@@ -89,6 +96,7 @@ function createButton(props) {
                   onTouchTap={onTouchTap}
                   className={className}
                   icon={icon}
+                  labelPosition={labelPosition}
                   label={label}
                   disabled={disabled} />
   }
