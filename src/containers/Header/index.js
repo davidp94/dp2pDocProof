@@ -20,7 +20,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(rightElementClass)
     return (
       <div className={styles}>
         <header>
@@ -39,7 +38,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    provider: state.provider
   };
 }
 

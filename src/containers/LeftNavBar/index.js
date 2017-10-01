@@ -38,7 +38,8 @@ class LeftNavBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    ui: state.ui
+    ui: state.ui,
+    provider: state.provider
   };
 }
 
