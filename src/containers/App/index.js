@@ -30,13 +30,14 @@ export class App extends Component {
 
   componentDidMount() {
     const { actions } = this.props;
-    const currentProvider = window.web3.currentProvider;
+    const currentProvider = window.web3 && window.web3.currentProvider || undefined;
     let web3Provider;
 
     if (typeof window.web3 !== 'undefined') {
       web3Provider = new Web3(currentProvider);
     } else {
-      alert('You must install MetaMask!')
+      console.error('web3 not detected, fallback strategy')
+      web3Provider = new Web3('http://localhost:8545');
     }
 
     actions.provider.specifyProvider(web3Provider);
