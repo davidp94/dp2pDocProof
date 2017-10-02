@@ -3,27 +3,28 @@
  */
 
 import React                   from 'react';
-import Button                  from 'components/Button';
-import ActionVerifiedUser      from 'material-ui/svg-icons/action/verified-user';
+import FlatButton                  from 'material-ui/FlatButton';
 import ActionInput             from 'material-ui/svg-icons/action/input';
 import {white}                   from 'material-ui/styles/colors'; 
+import Gravatar             from 'react-gravatar';
 
 /* component styles */
 import { styles } from './styles.scss';
 
 export default function HeaderProfile(props) {
   let {
-    connected
+    connected,
+    account
   } = props;
 
   return (
     <div>
-        <Button
+        <FlatButton
         className={styles}
         primary={true}
-        label={connected? 'connected' : 'connect'}
+        label={connected? account.substring(0, 8) : 'Install web3'}
         labelPosition="before"
-        icon={connected? <ActionVerifiedUser color={white} /> : <ActionInput color={white} /> }
+        icon={connected? <Gravatar email={account} />: <ActionInput color={white} /> }
         />
     </div>
   );

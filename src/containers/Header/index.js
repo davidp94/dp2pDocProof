@@ -3,12 +3,11 @@ import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AppBar                 from 'components/AppBar';
 import HeaderProfile          from 'components/HeaderProfile';
-
 /* actions */
 import * as uiActionCreators from 'core/actions/actions-ui';
 
 /* component styles */
-import { styles, rightElementClass } from './styles.scss';
+import { styles } from './styles.scss';
 
 class Header extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class Header extends Component {
           onLeftIconButtonTouchTap= {this.handleToggle}
           title="dp2p - Document Signer"
           iconElementRight={
-            <HeaderProfile className={styles.rightElementClass} />
+            <HeaderProfile className={styles.rightElementClass} account={this.props.provider.account} connected={this.props.provider.account}/>
           }
            />
         </header>
