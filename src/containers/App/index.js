@@ -8,6 +8,11 @@ import { HashRouter, Route }      from 'react-router-dom'
 import * as OfflinePluginRuntime  from 'offline-plugin/runtime';
 import Web3                       from 'web3';
 
+
+// Contract
+import MultiSigDocumentSignerContract from '../../../build/contracts/MultiSigDocumentSigner.json';
+const contract = require('truffle-contract')
+
 // global styles for entire app
 import './styles/app.scss';
 
@@ -41,6 +46,53 @@ export class App extends Component {
     }
 
     actions.provider.specifyProvider(web3Provider);
+
+    if(web3Provider) {
+      const msds = contract(MultiSigDocumentSignerContract);
+      msds.setProvider(web3Provider.currentProvider);
+
+      var msdsInstance;
+
+      web3Provider.eth.getCoinbase((err, coinbase) => {
+        if(err) console.error(err);
+        msds.deployed().then((instance) => {
+          msdsInstance = instance;
+
+          console.log(msdsInstance)
+
+          msdsInstance.contract.ContractInit({}, {
+            fromBlock: 0,
+            toBlock: 'latest'
+          })
+          .watch(console.log)
+
+          msdsInstance.SignedDocument({}, {
+            fromBlock: 0,
+            toBlock: 'latest'
+          })
+          .watch(console.log)
+
+          msdsInstance.NotarizedDocument({}, {
+            fromBlock: 0,
+            toBlock: 'latest'
+          })
+          .watch(console.log)
+
+          msdsInstance.UnsignedDocument({}, {
+            fromBlock: 0,
+            toBlock: 'latest'
+          })
+          .watch(console.log)
+
+          
+
+          
+
+
+        });
+      });
+      // actions.provider.getContractInitInfo();
+    }
   }
 
   render() {
