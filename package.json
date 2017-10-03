@@ -86,6 +86,7 @@
     "react-web3": "^0.4.3",
     "redux": "^3.1.4",
     "redux-thunk": "^2.0.1",
+    "swarm-js": "^0.1.36",
     "truffle-contract": "^3.0.0",
     "truffle-hdwallet-provider": "0.0.3",
     "uuid": "^3.0.1",
