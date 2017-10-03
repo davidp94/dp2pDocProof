@@ -36,7 +36,7 @@ class SignNewDocumentForm extends Component {
       swarmInstance
     } = this.state;
     this.state.swarmInstance.upload({
-      pick: 'file'
+      pick: 'data'
     })
     .then(callback);
   };
@@ -49,13 +49,14 @@ class SignNewDocumentForm extends Component {
 
   handleSignOnly = () => {
     console.log('signOnly')
-    // let {
-    //   swarmInstance
-    // } = this.state;
-    // this.state.swarmInstance.hash({
-    //   pick: 'file'
-    // })
-    // .then(console.log)
+    let {
+      swarmInstance
+    } = this.state;
+    this.state.swarmInstance.pick.data()
+    .then((data) => {
+      let hash = this.state.swarmInstance.hash(data);
+      console.log(hash);
+    })
   }
 
   render() {
