@@ -34,10 +34,6 @@ class Home extends Component {
     console.log(contractInitInfo)
     return (
       <div className={styles}>
-        <Paper zDepth={2}>
-          Welcome to Document Signer.
-        </Paper>
-        <br />
         { contractInitInfo ? 
         <ContractBlurbCard contractInitInfo={contractInitInfo} />
         :
