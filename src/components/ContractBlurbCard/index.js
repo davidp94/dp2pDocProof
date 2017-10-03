@@ -18,7 +18,8 @@ export default function ContractBlurbCard(props) {
   let {
       contractAddress,
       authorities,
-      minSignature
+      minSignature,
+      deployedBlockNumber
   } = props.contractInitInfo;
 
 
@@ -65,7 +66,9 @@ export default function ContractBlurbCard(props) {
             title={<div>Contract <ContractAddress /> </div>}
             subtitle={
               <div>
-              
+              <div>
+                Deployed in block {deployedBlockNumber}
+              </div>
               <AuthoritiesCount />
               - <MinRequiredSignature />
               </div>

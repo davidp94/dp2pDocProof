@@ -83,7 +83,8 @@ export class App extends Component {
         actions.provider.setContractInitInfo({
           contractAddress: args._contractAddress,
           authorities: args._authorities,
-          minSignature: args._minSignature.toString()
+          minSignature: args._minSignature.toString(),
+          deployedBlockNumber: data.blockNumber
         });
       }
     });
