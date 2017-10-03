@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import Paper from 'components/Paper';
 
+import ContractBlurbCard from 'components/ContractBlurbCard';
+
 /* component styles */
 import { styles } from './styles.scss';
 
@@ -12,12 +14,20 @@ class Home extends Component {
   }
 
   render() {
-    
+    let {
+      contractInitInfo
+    } = this.props.provider;
+    console.log(contractInitInfo)
     return (
       <div className={styles}>
         <Paper zDepth={2}>
           Welcome to Document Signer.
         </Paper>
+        { contractInitInfo ? 
+        <ContractBlurbCard contractInitInfo={contractInitInfo} />
+        :
+        null
+        }
       </div>
     );
   }
