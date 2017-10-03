@@ -67,7 +67,7 @@ export default function ContractBlurbCard(props) {
 
   return (
       <div className={styles}>
-        <Card className={styles}>
+        <Card zDepth={2} className={styles}>
           <CardHeader
             title={<div>Contract <ContractAddress /> </div>}
             subtitle={
