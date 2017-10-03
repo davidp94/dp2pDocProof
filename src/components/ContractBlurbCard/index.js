@@ -50,6 +50,7 @@ export default function ContractBlurbCard(props) {
   let ethAddressListItem = (ethAddress) => {
     return (
       <ListItem
+        key={ethAddress}
         primaryText={ethAddress}
         leftAvatar={<Gravatar email={ethAddress} />}
         rightIcon={<ActionInfo />}
