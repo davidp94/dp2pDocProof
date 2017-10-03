@@ -63,3 +63,5 @@ devTools
 
 credentials/mnemonic.js
 .githooks/pre-push
+
+dist/
