@@ -8,15 +8,58 @@ import FlatButton from 'material-ui/FlatButton';
 /* component styles */
 import { styles } from './styles.scss';
 
+import Swarm                  from 'swarm-js';
+
 /* actions */
 // import * as uiActionCreators   from 'core/actions/actions-ui';
 
 class SignNewDocumentForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      swarmInstance: null
+    };
+
+    this.handleUploadAndSign = this.handleUploadAndSign.bind(this);
+    this.handleSignOnly = this.handleSignOnly.bind(this);
+  }
+
+  componentDidMount() {
+    let _swarmInstance = Swarm.at('http://swarm-gateways.net');    
+    this.setState({
+      swarmInstance: _swarmInstance
+    })
+  }
+
+  uploadSwarm = (callback) => {
+    let {
+      swarmInstance
+    } = this.state;
+    this.state.swarmInstance.upload({
+      pick: 'file'
+    })
+    .then(callback);
+  };
+
+  handleUploadAndSign = () => {
+    this.uploadSwarm((swarmInfo) => {
+      console.log(swarmInfo);
+    });
+  }
+
+  handleSignOnly = () => {
+    console.log('signOnly')
+    // let {
+    //   swarmInstance
+    // } = this.state;
+    // this.state.swarmInstance.hash({
+    //   pick: 'file'
+    // })
+    // .then(console.log)
   }
 
   render() {
+
     return (
       <div className={styles} >
         <Card zDepth={2}>
@@ -30,8 +73,8 @@ class SignNewDocumentForm extends Component {
             </div>
           </CardText>
           <CardActions>
-            <FlatButton primary={true} label="Upload and sign" />
-            <FlatButton secondary={true} label="Sign Only" />
+            <FlatButton primary={true} label="Upload and sign" onClick={this.handleUploadAndSign} />
+            <FlatButton secondary={true} label="Sign Only" onClick={this.handleSignOnly} />
           </CardActions>
         </Card>
       </div>
