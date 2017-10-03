@@ -24,9 +24,9 @@ export default function ContractBlurbCard(props) {
 
   let ContractAddress = () => {
     return (
-      <div>
+      <span>
         {contractAddress}
-      </div>
+      </span>
     )
   }
 
@@ -62,10 +62,10 @@ export default function ContractBlurbCard(props) {
       <div className={styles}>
         <Card className={styles}>
           <CardHeader
-            title="Document Signer Contract Summary"
+            title={<div>Contract <ContractAddress /> </div>}
             subtitle={
               <div>
-              <ContractAddress />
+              
               <AuthoritiesCount />
               - <MinRequiredSignature />
               </div>
