@@ -31,6 +31,9 @@ OfflinePluginRuntime.install();
 export class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      msdsInstance: null
+    };
   }
 
   componentDidMount() {
@@ -42,7 +45,7 @@ export class App extends Component {
       web3Provider = new Web3(currentProvider);
     } else {
       console.error('web3 not detected, fallback strategy')
-      web3Provider = new Web3('http://localhost:8545');
+      web3Provider = new Web3('http://localhost:8686');
     }
 
     actions.provider.specifyProvider(web3Provider);
@@ -51,48 +54,47 @@ export class App extends Component {
       const msds = contract(MultiSigDocumentSignerContract);
       msds.setProvider(web3Provider.currentProvider);
 
-      var msdsInstance;
-
       web3Provider.eth.getCoinbase((err, coinbase) => {
         if(err) console.error(err);
         msds.deployed().then((instance) => {
-          msdsInstance = instance;
+          this.setState({
+            msdsInstance : instance
+          });
 
-          console.log(msdsInstance)
+          console.log(this.state.msdsInstance)
 
-          msdsInstance.contract.ContractInit({}, {
-            fromBlock: 0,
-            toBlock: 'latest'
-          })
-          .watch(console.log)
-
-          msdsInstance.SignedDocument({}, {
-            fromBlock: 0,
-            toBlock: 'latest'
-          })
-          .watch(console.log)
-
-          msdsInstance.NotarizedDocument({}, {
-            fromBlock: 0,
-            toBlock: 'latest'
-          })
-          .watch(console.log)
-
-          msdsInstance.UnsignedDocument({}, {
-            fromBlock: 0,
-            toBlock: 'latest'
-          })
-          .watch(console.log)
-
-          
-
-          
-
-
+          this.initializeEventsListeners();
         });
       });
       // actions.provider.getContractInitInfo();
     }
+  }
+
+  initializeEventsListeners() {
+    let msdsInstance = this.state.msdsInstance;
+    msdsInstance.contract.ContractInit({}, {
+      fromBlock: 0,
+      toBlock: 'latest'
+    })
+    .watch(console.log);
+
+    msdsInstance.SignedDocument({}, {
+      fromBlock: 0,
+      toBlock: 'latest'
+    })
+    .watch(console.log);
+
+    msdsInstance.NotarizedDocument({}, {
+      fromBlock: 0,
+      toBlock: 'latest'
+    })
+    .watch(console.log);
+
+    msdsInstance.UnsignedDocument({}, {
+      fromBlock: 0,
+      toBlock: 'latest'
+    })
+    .watch(console.log);
   }
 
   render() {
