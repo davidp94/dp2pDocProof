@@ -1,9 +1,9 @@
 import React, { Component }   from 'react';
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { Drawer,
-//          AppBar,
-//          Divider }            from 'material-ui';
+
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 /* component styles */
 import { styles } from './styles.scss';
@@ -19,7 +19,21 @@ class SignNewDocumentForm extends Component {
   render() {
     return (
       <div className={styles} >
-        Sign document Form
+        <Card zDepth={2}>
+          <CardTitle title="Sign a new document" />
+          <CardText>
+            <div>
+            In order to sign a new document, please pick one option: <br/>
+            - Upload and Sign
+            <br />
+            - Sign Only
+            </div>
+          </CardText>
+          <CardActions>
+            <FlatButton primary={true} label="Upload and sign" />
+            <FlatButton secondary={true} label="Sign Only" />
+          </CardActions>
+        </Card>
       </div>
     );
   }
