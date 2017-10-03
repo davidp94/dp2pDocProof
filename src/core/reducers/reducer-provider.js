@@ -15,6 +15,10 @@ export function providerReducer(state = initialState, action) {
     return Object.assign({}, state, {
       account: action.address
     });
+  case constants.SET_CONTRACT_INIT_INFO:
+    return Object.assign({}, state, {
+      contractInitInfo: action.contractInitInfo
+    });
 
 
   default:

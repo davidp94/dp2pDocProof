@@ -9,3 +9,13 @@ export function specifyProvider(provider) {
     type    : constants.SPECIFY_PROVIDER
   };
 }
+
+/**
+ * getContractInitInfo
+ */
+export function setContractInitInfo(initInfo) {
+  return {
+    contractInitInfo: initInfo,
+    type    : constants.SET_CONTRACT_INIT_INFO
+  };
+}

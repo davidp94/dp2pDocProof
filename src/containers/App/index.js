@@ -66,17 +66,27 @@ export class App extends Component {
           this.initializeEventsListeners();
         });
       });
-      // actions.provider.getContractInitInfo();
     }
   }
 
   initializeEventsListeners() {
     let msdsInstance = this.state.msdsInstance;
+    const { actions } = this.props;
     msdsInstance.contract.ContractInit({}, {
       fromBlock: 0,
       toBlock: 'latest'
     })
-    .watch(console.log);
+    .watch((err, data) => {
+      if(err) console.error(err);
+      else {
+        const args = data.args;
+        actions.provider.setContractInitInfo({
+          contractAddress: args._contractAddress,
+          authorities: args._authorities,
+          minSignature: args._minSignature.toNumber()
+        });
+      }
+    });
 
     msdsInstance.SignedDocument({}, {
       fromBlock: 0,
