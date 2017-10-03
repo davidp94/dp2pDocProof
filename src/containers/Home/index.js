@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Paper from 'components/Paper';
 
 /* component styles */
 import { styles } from './styles.scss';
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    
     return (
       <div className={styles}>
         <Paper zDepth={2}>
@@ -20,3 +22,11 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    provider: state.provider
+  };
+}
+
+export default connect(mapStateToProps)(Home);
