@@ -12,7 +12,7 @@ import Gravatar             from 'react-gravatar';
 
 
 /* component styles */
-import { styles } from './styles.scss';
+import { styles, ethAddressListItemStyle } from './styles.scss';
 
 export default function ContractBlurbCard(props) {
   let {
@@ -51,7 +51,12 @@ export default function ContractBlurbCard(props) {
     return (
       <ListItem
         key={ethAddress}
-        primaryText={ethAddress}
+        primaryText={
+          <div 
+          className={ethAddressListItemStyle}>
+            {ethAddress}
+          </div>
+        }
         leftAvatar={<Gravatar email={ethAddress} />}
         rightIcon={<ActionInfo />}
       />
