@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Paper from 'components/Paper';
+import LinearProgress from 'material-ui/LinearProgress';
 
 import ContractBlurbCard from 'components/ContractBlurbCard';
 import SignNewDocumentForm from 'containers/SignNewDocumentForm';
@@ -31,15 +32,22 @@ class Home extends Component {
     return (
       <div className={styles}>
         { contractInitInfo ? 
-        <ContractBlurbCard contractInitInfo={contractInitInfo} />
+        <div>
+          <ContractBlurbCard contractInitInfo={contractInitInfo} />
+          <br />
+          { isAuthority() ?
+            <SignNewDocumentForm msdsInstance={this.props.msdsInstance} />
+            :
+            null
+          }
+        </div>
         :
-        null
-        }
-        <br />
-        { isAuthority() ?
-          <SignNewDocumentForm msdsInstance={this.props.msdsInstance} />
-          :
-          null
+        <div>
+          <h2>
+            Loading Smart Contract...
+          </h2>
+          <LinearProgress mode="indeterminate" />
+        </div>
         }
 
       </div>
