@@ -18,6 +18,7 @@ import './styles/app.scss';
 
 /* application containers */
 import Header     from 'containers/Header';
+import Snackbar from 'material-ui/Snackbar';
 import LeftNavBar from 'containers/LeftNavBar';
 import Home       from 'containers/Home';
 
@@ -109,6 +110,16 @@ export class App extends Component {
   }
 
   render() {
+
+    let HomeWithProps = (props) => {
+      return (
+        <Home
+        msdsInstance={this.state.msdsInstance}
+        {...props}
+        />
+      )
+    }
+    console.log(this.state);
     return (
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <HashRouter>
@@ -116,15 +127,30 @@ export class App extends Component {
             <Header />
             <div className="container">
               <div>
-                <Route exact path="/" component={Home}/>
+                <Route exact path="/" component={HomeWithProps} />
               </div>
             </div>
             <LeftNavBar />
+            <Snackbar
+              open={this.props.ui.snackbarOpen}
+              message={
+                <div>
+                  {this.props.ui.snackbarText}
+                </div>
+                  }
+              autoHideDuration={2500}
+            />
           </div>
         </HashRouter>
       </MuiThemeProvider>
     );
   }
+}
+
+function mapStateToProps(state) {
+  return {
+    ui: state.ui
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -135,4 +161,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

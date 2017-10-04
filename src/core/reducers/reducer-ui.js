@@ -17,6 +17,12 @@ export function uiReducer(state = initialState, action) {
       leftNavOpen: false
     });
 
+  case constants.SNACKBAR:
+    return Object.assign({}, state, {
+      snackbarOpen : true,
+      snackbarText: action.text
+    });
+
   default:
     return state;
   }

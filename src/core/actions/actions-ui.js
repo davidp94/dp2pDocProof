@@ -17,3 +17,10 @@ export function closeNav() {
     type: constants.CLOSE_NAV
   };
 }
+
+export function snackbar(text) {
+  return {
+    type: constants.SNACKBAR,
+    text: text
+  }
+}
