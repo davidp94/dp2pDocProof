@@ -6,8 +6,6 @@ import Paper from 'components/Paper';
 import ContractBlurbCard from 'components/ContractBlurbCard';
 import SignNewDocumentForm from 'containers/SignNewDocumentForm';
 
-import _find from 'lodash/find';
-
 /* component styles */
 import { styles } from './styles.scss';
 
@@ -23,12 +21,10 @@ class Home extends Component {
       account
     } = this.props.provider;
 
-    let {
-      authorities
-    } = contractInitInfo;
-
     let isAuthority = () => {
-      return account && _find(authorities, account);
+      if(!contractInitInfo || !contractInitInfo.authorities) return false;
+      let authorities = contractInitInfo.authorities;
+      return account && authorities && authorities.findIndex((v)=>v===account)>-1;
     };
 
     console.log(contractInitInfo)
