@@ -11,7 +11,7 @@ import { styles } from './styles.scss';
 import Swarm                  from 'swarm-js';
 
 /* actions */
-// import * as uiActionCreators   from 'core/actions/actions-ui';
+import * as uiActionCreators   from 'core/actions/actions-ui';
 
 class SignNewDocumentForm extends Component {
   constructor(props) {
@@ -42,8 +42,23 @@ class SignNewDocumentForm extends Component {
   };
 
   handleUploadAndSign = () => {
+    let {
+      msdsInstance,
+      actions,
+      provider
+    } = this.props;
     this.uploadSwarm((swarmInfo) => {
       console.log(swarmInfo);
+      console.log(this.props.msdsInstance);
+      msdsInstance
+        .sign(swarmInfo,
+        {
+          from: provider.account
+        })
+        .catch((err) => {
+          console.error(err);
+          actions.ui.snackbar(err.toString());
+        });
     });
   }
 
@@ -94,7 +109,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-    //   ui   : bindActionCreators(uiActionCreators, dispatch)
+      ui   : bindActionCreators(uiActionCreators, dispatch)
     }
   };
 }

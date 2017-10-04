@@ -41,7 +41,7 @@ class Home extends Component {
         }
         <br />
         { isAuthority() ?
-          <SignNewDocumentForm />
+          <SignNewDocumentForm msdsInstance={this.props.msdsInstance} />
           :
           null
         }
