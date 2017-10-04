@@ -90,23 +90,61 @@ export class App extends Component {
       }
     });
 
-    msdsInstance.SignedDocument({}, {
+    msdsInstance.contract.SignedDocument({}, {
       fromBlock: 0,
       toBlock: 'latest'
     })
-    .watch(console.log);
+    .watch((err, data) => {
+      if(err) {
+        console.error(err);
+      }
+      else {
+        const args = data.args;
+        actions.provider.addSignature({
+          blockNumber: data.blockNumber,
+          //transactionHash ?
+          document: args.document,
+          signer: args.signer
+        });
+      }
+    });
 
-    msdsInstance.NotarizedDocument({}, {
+    msdsInstance.contract.NotarizedDocument({}, {
       fromBlock: 0,
       toBlock: 'latest'
     })
-    .watch(console.log);
+    .watch((err, data) => {
+      if(err) {
+        console.error(err);
+      }
+      else {
+        const args = data.args;
+        actions.provider.notarizeDocument({
+          blockNumber: data.blockNumber,
+          //transactionHash ?
+          document: args.document
+        });
+      }
+    });
 
-    msdsInstance.UnsignedDocument({}, {
+    msdsInstance.contract.UnsignedDocument({}, {
       fromBlock: 0,
       toBlock: 'latest'
     })
-    .watch(console.log);
+    .watch((err, data) => {
+      if(err) {
+        console.error(err);
+      }
+      else {
+        const args = data.args;
+        actions.provider.delSignature({
+          blockNumber: data.blockNumber,
+          //transactionHash ?
+          document: args.document,
+          signer: args.signer
+        });
+      }
+    });
   }
 
   render() {

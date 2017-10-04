@@ -9,5 +9,8 @@ export default keyMirror({
   'web3/RECEIVE_ACCOUNT': null,
   'web3/CHANGE_ACCOUNT': null,
   SET_CONTRACT_INIT_INFO: null,
-  SNACKBAR: null
+  SNACKBAR: null,
+  NOTARIZE_DOCUMENT: null,
+  ADD_SIGNATURE: null,
+  DEL_SIGNATURE: null
 });

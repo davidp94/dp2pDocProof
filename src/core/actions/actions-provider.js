@@ -19,3 +19,33 @@ export function setContractInitInfo(initInfo) {
     type    : constants.SET_CONTRACT_INIT_INFO
   };
 }
+
+/**
+ * addSignature
+ */
+export function addSignature(info) {
+  return {
+    info: info,
+    type    : constants.ADD_SIGNATURE
+  };
+}
+
+/**
+ * delSignature
+ */
+export function delSignature(info) {
+  return {
+    info: info,
+    type    : constants.DEL_SIGNATURE
+  };
+}
+
+/**
+ * notarizeDocument
+ */
+export function notarizeDocument(info) {
+  return {
+    info: info,
+    type    : constants.NOTARIZE_DOCUMENT
+  };
+}

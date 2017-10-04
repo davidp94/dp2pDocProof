@@ -1,7 +1,13 @@
 import constants from 'core/types';
 
 const initialState = {
-  provider: null
+  provider: null,
+  contractState: {
+    documents: {
+      //key:documentHash
+      //value: Object
+    }
+  }
 };
 
 export function providerReducer(state = initialState, action) {
@@ -19,6 +25,23 @@ export function providerReducer(state = initialState, action) {
     return Object.assign({}, state, {
       contractInitInfo: action.contractInitInfo
     });
+  case constants.ADD_SIGNATURE:
+    console.log(action.info);
+    var document = state.contractState.documents[action.info.document];
+    return Object.assign({}, state, {
+      // contractInitInfo: action.contractInitInfo
+    });
+  case constants.DEL_SIGNATURE:
+    console.log(action.info);
+    return Object.assign({}, state, {
+      // contractInitInfo: action.contractInitInfo
+    });
+  case constants.NOTARIZE_DOCUMENT:
+    console.log(action.info);
+    return Object.assign({}, state, {
+      // contractInitInfo: action.contractInitInfo
+    });
+      
 
 
   default:
