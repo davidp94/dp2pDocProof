@@ -1,7 +1,9 @@
 import constants from 'core/types';
 
 const initialState = {
-  leftNavOpen: false
+  leftNavOpen: false,
+  snackbarOpen: false,
+  snackbarText: null
 };
 
 export function uiReducer(state = initialState, action) {
