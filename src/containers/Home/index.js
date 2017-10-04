@@ -28,7 +28,7 @@ class Home extends Component {
     } = contractInitInfo;
 
     let isAuthority = () => {
-      return account && _find(authorities, account.address);
+      return account && _find(authorities, account);
     };
 
     console.log(contractInitInfo)
