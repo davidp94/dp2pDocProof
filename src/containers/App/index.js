@@ -114,6 +114,7 @@ export class App extends Component {
       toBlock: 'latest'
     })
     .watch((err, data) => {
+      console.log('notarized document', data);
       if(err) {
         console.error(err);
       }
@@ -132,6 +133,7 @@ export class App extends Component {
       toBlock: 'latest'
     })
     .watch((err, data) => {
+      console.log('unsigned document', data);
       if(err) {
         console.error(err);
       }
