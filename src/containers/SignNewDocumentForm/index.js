@@ -56,6 +56,10 @@ class SignNewDocumentForm extends Component {
         {
           from: provider.account
         })
+        .then((res) => {
+          console.log('transaction success', res);
+          actions.ui.snackbar('Transaction processed: ' + res.receipt.transactionHash);
+        })
         .catch((err) => {
           console.error(err);
           actions.ui.snackbar(err.toString());
