@@ -50,6 +50,7 @@ class SignNewDocumentForm extends Component {
     this.uploadSwarm((swarmInfo) => {
       console.log(swarmInfo);
       console.log(this.props.msdsInstance);
+      swarmInfo = '0x' + swarmInfo;
       msdsInstance
         .sign(swarmInfo,
         {
