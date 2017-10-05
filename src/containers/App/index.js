@@ -71,8 +71,10 @@ export class App extends Component {
   }
 
   initializeEventsListeners() {
+    console.log('begin init event listeners')    
     let msdsInstance = this.state.msdsInstance;
     const { actions } = this.props;
+    
     msdsInstance.contract.ContractInit({}, {
       fromBlock: 0,
       toBlock: 'latest'
@@ -147,6 +149,8 @@ export class App extends Component {
         });
       }
     });
+
+    console.log('end init event listeners')
   }
 
   render() {
