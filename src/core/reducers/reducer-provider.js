@@ -15,6 +15,7 @@ const initialState = {
 };
 
 export function providerReducer(state = initialState, action) {
+  var newState;
   switch (action.type) {
   case constants.SPECIFY_PROVIDER:
     return Object.assign({}, state, {
@@ -39,14 +40,14 @@ export function providerReducer(state = initialState, action) {
       notarized: false
     });
 
-    var newState = _merge({}, state);
+    newState = _merge({}, state);
     newState.contractState.documents[action.info.document] = document;
     newState.contractState.documents[action.info.document].signers.push(action.info.signer);
     newState.contractState.documents[action.info.document].signersCount++;
     return newState;
   case constants.DEL_SIGNATURE:
     console.log(action.info);
-    var newState = _merge({}, state);
+    newState = _merge({}, state);
     _remove(newState.contractState.documents[action.info.document].signers, (s) => {
       s === action.info.signer;
     })
@@ -54,7 +55,7 @@ export function providerReducer(state = initialState, action) {
     return newState;
   case constants.NOTARIZE_DOCUMENT:
     console.log(action.info);
-    var newState = _merge({}, state);
+    newState = _merge({}, state);
     newState.contractState.documents[action.info.document].notarized = true;
     return newState;
   default:

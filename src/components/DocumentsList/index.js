@@ -70,7 +70,6 @@ export default function DocumentsList(props) {
 
   let documentItem = (document) => {
     console.log(document)
-    return null;
     return (
       <ListItem>
         {document}
