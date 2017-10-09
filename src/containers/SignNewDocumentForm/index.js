@@ -90,12 +90,12 @@ class SignNewDocumentForm extends Component {
             In order to sign a new document, please pick one option: <br/>
             - Upload and Sign
             <br />
-            - Sign Only
+            - Sign Only (disabled at the moment)
             </div>
           </CardText>
           <CardActions>
             <FlatButton primary={true} label="Upload and sign" onClick={this.handleUploadAndSign} />
-            <FlatButton secondary={true} label="Sign Only" onClick={this.handleSignOnly} />
+            <FlatButton disabled={true} secondary={true} label="Sign Only" onClick={this.handleSignOnly} />
           </CardActions>
         </Card>
       </div>
