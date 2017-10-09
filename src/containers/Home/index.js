@@ -6,6 +6,7 @@ import LinearProgress from 'material-ui/LinearProgress';
 
 import ContractBlurbCard from 'components/ContractBlurbCard';
 import SignNewDocumentForm from 'containers/SignNewDocumentForm';
+import DocumentsList from 'components/DocumentsList';
 
 /* component styles */
 import { styles } from './styles.scss';
@@ -40,6 +41,8 @@ class Home extends Component {
             :
             null
           }
+          <br />
+          <DocumentsList provider={this.props.provider} />
         </div>
         :
         <div>
