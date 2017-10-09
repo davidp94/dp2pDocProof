@@ -88,7 +88,7 @@ export default function DocumentsList(props) {
             <h3>
               {
                 documents.length === 0 ?
-                "No Signed Documents"
+                'No Signed Documents'
                 :
                 <List>
                   {
