@@ -8,13 +8,13 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
-    ropsten: {
-      provider: new HDWalletProvider(mnemonic, "http://localhost:8686"),
-      // port: 8686,
-      network_id: "3",
-      gas: 5000000,
-      gasPrice: 200000000000
-    }
+    // ropsten: {
+    //   provider: new HDWalletProvider(mnemonic, "http://localhost:8686"),
+    //   // port: 8686,
+    //   network_id: "3",
+    //   gas: 5000000,
+    //   gasPrice: 200000000000
+    // }
   },
   solc: {
     optimizer: {

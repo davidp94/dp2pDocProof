@@ -9,5 +9,5 @@ module.exports = function(deployer) {
     "0x66660b1221ffa6871d4132e0e5ca5c8b8c767fd6",
     "0x65515eb567b6dd84a7a254ef806ccf1cab9009df",
     "0x9a21441d448d5db6536a62f1c217ef4356b47cc0"
-  ], 3);
+  ], 1);
 };

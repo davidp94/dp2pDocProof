@@ -261,8 +261,83 @@
       "links": {},
       "address": "0xd7914e0d1306276d6c8b9d5356e4dd1459982e85",
       "updated_at": 1506927201378
+    },
+    "1507429124898": {
+      "events": {
+        "0xbb0d619a0c26521e44a9764bd3259798168bf140a600f7f0fda78849bd9dbd6a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_contractAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_authorities",
+              "type": "address[]"
+            },
+            {
+              "indexed": false,
+              "name": "_minSignature",
+              "type": "uint256"
+            }
+          ],
+          "name": "ContractInit",
+          "type": "event"
+        },
+        "0x30b8eeed9e686f719131443dde265f06eca79c09396c521f9ab3e3a551fbaec6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "document",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "signer",
+              "type": "address"
+            }
+          ],
+          "name": "SignedDocument",
+          "type": "event"
+        },
+        "0xf32e53f9e3c69317276854859207fa6b225055d91e6c44c641ce0233a316cd0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "document",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "signer",
+              "type": "address"
+            }
+          ],
+          "name": "UnsignedDocument",
+          "type": "event"
+        },
+        "0x7e050cd54e60fb32212663200061d4fb6d056d8eb35787c148178a01e95f8ef2": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "document",
+              "type": "bytes32"
+            }
+          ],
+          "name": "NotarizedDocument",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x2a651fc57bd29fa1ea5165bbac5aacdb6f6bf680",
+      "updated_at": 1507513325015
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1506996590566
+  "updated_at": 1507513325015
 }

@@ -75,8 +75,8 @@ export class App extends Component {
     let msdsInstance = this.state.msdsInstance;
     const { actions } = this.props;
     
-    msdsInstance.contract.ContractInit({}, {
-      fromBlock: 0,
+    msdsInstance.ContractInit({}, {
+      fromBlock: 1,
       toBlock: 'latest'
     })
     .watch((err, data) => {
@@ -92,8 +92,8 @@ export class App extends Component {
       }
     });
 
-    msdsInstance.contract.SignedDocument({}, {
-      fromBlock: 0,
+    msdsInstance.SignedDocument({}, {
+      fromBlock: 1,
       toBlock: 'latest'
     })
     .watch((err, data) => {
@@ -111,8 +111,8 @@ export class App extends Component {
       }
     });
 
-    msdsInstance.contract.NotarizedDocument({}, {
-      fromBlock: 0,
+    msdsInstance.NotarizedDocument({}, {
+      fromBlock: 1,
       toBlock: 'latest'
     })
     .watch((err, data) => {
@@ -130,8 +130,8 @@ export class App extends Component {
       }
     });
 
-    msdsInstance.contract.UnsignedDocument({}, {
-      fromBlock: 0,
+    msdsInstance.UnsignedDocument({}, {
+      fromBlock: 1,
       toBlock: 'latest'
     })
     .watch((err, data) => {
