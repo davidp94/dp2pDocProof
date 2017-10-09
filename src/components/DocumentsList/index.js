@@ -89,7 +89,7 @@ export default function DocumentsList(props) {
           <CardTitle title="Documents" />
           <CardText>
             {
-              documents.length === 0 ?
+              Object.keys(documents).length === 0 ?
               'No Signed Documents'
               :
               <List>
