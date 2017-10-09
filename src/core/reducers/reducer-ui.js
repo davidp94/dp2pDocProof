@@ -11,12 +11,14 @@ export function uiReducer(state = initialState, action) {
 
   case constants.OPEN_NAV:
     return Object.assign({}, state, {
-      leftNavOpen: true
+      leftNavOpen: true,
+      snackbarOpen: false
     });
 
   case constants.CLOSE_NAV:
     return Object.assign({}, state, {
-      leftNavOpen: false
+      leftNavOpen: false,
+      snackbarOpen: false
     });
 
   case constants.SNACKBAR:
