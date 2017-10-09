@@ -42,7 +42,7 @@ export default function ContractBlurbCard(props) {
   let MinRequiredSignature = () => {
     return (
       <span>
-        {minSignature.length} required signature{minSignature.length>1? 's': null} per document
+        {minSignature} required signature{minSignature>1? 's': null} per document
       </span>
     );
   };
