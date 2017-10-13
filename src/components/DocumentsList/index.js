@@ -37,8 +37,9 @@ export default function DocumentsList(props) {
   let documentItem = (document) => {
     console.log(document)
     return (
-      <ListItem
-      key={document.document}>
+      <div
+      key={document.document}
+      style={{paddingBottom:10}}>
         <Card zDepth={2}>
           <CardHeader
             title={document.document}
@@ -54,7 +55,7 @@ export default function DocumentsList(props) {
             </CardActions>
           </CardText>
         </Card>
-      </ListItem>
+      </div>
     )
   }
   return (
