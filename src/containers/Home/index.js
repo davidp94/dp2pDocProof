@@ -42,7 +42,7 @@ class Home extends Component {
             null
           }
           <br />
-          <DocumentsList provider={this.props.provider} />
+          <DocumentsList provider={this.props.provider} msdsInstance={this.props.msdsInstance} />
         </div>
         :
         <div>
