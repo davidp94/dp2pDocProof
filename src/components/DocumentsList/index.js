@@ -66,9 +66,11 @@ export default function DocumentsList(props) {
             showExpandableButton={true}/>
           <CardText expandable={true}>
             <CardActions>
-              {_indexOf(_values(document.signers), account) > -1
-                ? <FlatButton label="Signed" disabled/>
-                : <FlatButton label="Sign" onClick={() => signDocument(document.document)}/>}
+              {props.isAuthority()
+                ? (_indexOf(_values(document.signers), account) > -1
+                  ? <FlatButton label="Signed" disabled/>
+                  : <FlatButton label="Sign" onClick={() => signDocument(document.document)}/>)
+                : null}
               <FlatButton label="Details"/>
             </CardActions>
           </CardText>
