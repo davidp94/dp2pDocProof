@@ -10,62 +10,25 @@ import Subheader from 'material-ui/Subheader';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import Gravatar             from 'react-gravatar';
+import FlatButton from 'material-ui/FlatButton';
 
 import _mapValues from 'lodash/mapValues';
 import _values from 'lodash/values';
+import _find from 'lodash/find';
+import _indexOf from 'lodash/indexOf';
 
 /* component styles */
 import { styles, ethAddressListItemStyle } from './styles.scss';
 
+import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+
 export default function DocumentsList(props) {
-    //   let {
-//       contractAddress,
-//       authorities,
-//       minSignature,
-//       deployedBlockNumber
-//   } = props.contractInitInfo;
 
 
-//   let ContractAddress = () => {
-//     return (
-//       <span>
-//         {contractAddress}
-//       </span>
-//     )
-//   }
-
-//   let AuthoritiesCount = () => {
-//     return (
-//       <span>
-//         {authorities.length} authorities
-//       </span>
-//     );
-//   };
-
-//   let MinRequiredSignature = () => {
-//     return (
-//       <span>
-//         {minSignature.length} required signature{minSignature.length>1? 's': null} per document
-//       </span>
-//     );
-//   };
-
-//   let ethAddressListItem = (ethAddress) => {
-//     return (
-//       <ListItem
-//         key={ethAddress}
-//         primaryText={
-//           <div 
-//           className={ethAddressListItemStyle}>
-//             {ethAddress}
-//           </div>
-//         }
-//         leftAvatar={<Gravatar email={ethAddress} />}
-//         rightIcon={<ActionInfo />}
-//       />
-//     )
-//   };
   console.log(props)
+  let account = props.provider.account;
   let contractState = props.provider.contractState;
   let documents = contractState.documents;
 
@@ -75,11 +38,22 @@ export default function DocumentsList(props) {
     console.log(document)
     return (
       <ListItem
-      key={document.document}
-      leftAvatar={<Gravatar email={document.document} />}
-      rightIcon={document.notarized? <ActionCheckCircle /> : null}>
-        {/* {document.signers.length} signer{document.signers.length>1?'s':null} */}
-        Document {document.document}
+      key={document.document}>
+        <Card zDepth={2}>
+          <CardHeader
+            title={document.document}
+            subtitle={document.notarized ? 'Verified Document' : 'Document'}
+            avatar={<Gravatar email={document.document} />}
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={true}>
+            <CardActions>
+              {_indexOf(_values(document.signers), account) > -1 ? <FlatButton label="Signed" disabled />: <FlatButton label="Sign" />}
+              <FlatButton label="Details" />
+            </CardActions>
+          </CardText>
+        </Card>
       </ListItem>
     )
   }
@@ -99,10 +73,6 @@ export default function DocumentsList(props) {
               </List>
             }
           </CardText>
-          {/* <CardActions>
-            <FlatButton primary={true} label="Upload and sign" onClick={this.handleUploadAndSign} />
-            <FlatButton secondary={true} label="Sign Only" onClick={this.handleSignOnly} />
-          </CardActions> */}
         </Card>
       </div>
 );
