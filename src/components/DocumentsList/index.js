@@ -57,7 +57,7 @@ export default function DocumentsList(props) {
           <CardHeader
             title={document.document}
             subtitle={document.notarized
-            ? 'Verified Document'
+            ? 'Verified Document in block ' + document.notarizedBlockNumber 
             : 'Document'}
             avatar={< Gravatar email = {
             document.document

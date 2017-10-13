@@ -37,13 +37,17 @@ export function providerReducer(state = initialState, action) {
       document: action.info.document,
       signersCount: 0,
       signers: [],
-      notarized: false
+      notarized: false,
+      notarizedBlockNumber: null,
+      lastUpdateBlockNumber: null
     });
 
     newState = _merge({}, state);
     newState.contractState.documents[action.info.document] = document;
     newState.contractState.documents[action.info.document].signers.push(action.info.signer);
     newState.contractState.documents[action.info.document].signersCount++;
+    newState.contractState.documents[action.info.document].lastUpdateBlockNumber = action.info.blockNumber;
+    
     return newState;
   case constants.DEL_SIGNATURE:
     console.log(action.info);
@@ -52,11 +56,16 @@ export function providerReducer(state = initialState, action) {
       s === action.info.signer;
     })
     newState.contractState.documents[action.info.document].signersCount--;
+    newState.contractState.documents[action.info.document].lastUpdateBlockNumber = action.info.blockNumber;
+
     return newState;
   case constants.NOTARIZE_DOCUMENT:
     console.log(action.info);
     newState = _merge({}, state);
     newState.contractState.documents[action.info.document].notarized = true;
+    newState.contractState.documents[action.info.document].notarizedBlockNumber = action.info.blockNumber;
+    newState.contractState.documents[action.info.document].lastUpdateBlockNumber = action.info.blockNumber;
+    
     return newState;
   default:
     return state;
