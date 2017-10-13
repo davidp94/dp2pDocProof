@@ -16,6 +16,7 @@ import _mapValues from 'lodash/mapValues';
 import _values from 'lodash/values';
 import _find from 'lodash/find';
 import _indexOf from 'lodash/indexOf';
+import _sortBy from 'lodash/sortBy';
 
 /* component styles */
 import {styles, ethAddressListItemStyle} from './styles.scss';
@@ -25,6 +26,10 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
 export default function DocumentsList(props) {
+
+  let sort = (documents) => {
+    return _sortBy(documents, (d) => -d.lastUpdatedBlockNumber);
+  }
 
   console.log(props)
   let account = props.provider.account;
@@ -57,7 +62,7 @@ export default function DocumentsList(props) {
           <CardHeader
             title={document.document}
             subtitle={document.notarized
-            ? 'Verified Document in block ' + document.notarizedBlockNumber 
+            ? 'Verified Document in block ' + document.notarizedBlockNumber
             : 'Document'}
             avatar={< Gravatar email = {
             document.document
@@ -88,7 +93,7 @@ export default function DocumentsList(props) {
             .length === 0
             ? 'No Signed Documents'
             : <List>
-              {_values(_mapValues(documents, documentItem))
+              {sort(_values(_mapValues(documents, documentItem)))
 }
             </List>
 }
