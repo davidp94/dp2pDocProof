@@ -25,6 +25,11 @@ Using this dApp, they will just have to deploy this smart contract with both of 
 Signing the document could digitalize in a secure manner the signature of their contract.
 
 
+
+## How to use it / deploy it 
+
+- *Work in progress* - it is based on truffle
+
 Planned features: 
 
 - sign only feature (not uploading the document to Swarm) for private documents.
