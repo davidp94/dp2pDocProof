@@ -48,9 +48,14 @@ contract MultiSigDocumentSigner {
     function MultiSigDocumentSigner(address[] _authorities, uint minSignature) {
         require(_authorities.length > 0);
         require(minSignature > 0 && minSignature <= _authorities.length);
+        uint uniqueAuthorities = 0;
         for (uint i = 0; i < _authorities.length; i++) {
-            authorities[address(_authorities[i])] = true;
+            if(!authorities[address(_authorities[i])]) {
+                authorities[address(_authorities[i])] = true;
+                uniqueAuthorities += 1;
+            }
         }
+        require(uniqueAuthorities <= minSignature);
         requiredMinSignature = minSignature;
         ContractInit(this, _authorities, minSignature);
     }
