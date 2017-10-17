@@ -45,4 +45,10 @@ and the signature will be on chain.
 - enable people to send Whisper messages to authorities in order to ask them to sign the document.
 authorities could generate a Whisper identity and update it on the smart contract so they can be contacted by trusted ones.
 
+- reveal the document after the document has the required signature count.
+  - share a secret SALT between the authorities via whisper
+  - `bytes32 documentToBeRevealed = keccak(SALT ^ swarmDocumentHash)` in a `signReveal(bytes32 documentToBeRevealed)`
+  - once the `documentToBeRevealed` has the minimum required signature any of the authorities can call `revealDocument(bytes32 revealedDocument, bytes32 SALT, bytes32 documentToBeRevealed)`
+  - `if(keccak(SALT ^ revealedDocument) == documentToBeRevealed && hasEnoughSignatures(documentToBeRevealed)) {}` 
+
 - ??
