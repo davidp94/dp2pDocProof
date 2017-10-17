@@ -55,7 +55,7 @@ contract MultiSigDocumentSigner {
                 uniqueAuthorities += 1;
             }
         }
-        require(uniqueAuthorities <= minSignature);
+        require(uniqueAuthorities >= minSignature);
         requiredMinSignature = minSignature;
         ContractInit(this, _authorities, minSignature);
     }
