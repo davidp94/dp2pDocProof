@@ -1,6 +1,9 @@
 *Work in progress.*
 
+
 ## dApp doc proof
+
+![2017-10-17-23-40-localhost-3000](https://user-images.githubusercontent.com/25910069/31704109-b7661aaa-b394-11e7-9c37-4cc9d31cd0cc.png)
 
 prove that you signed a document on the blockchain with multiple authorities involved.
 
