@@ -54,4 +54,7 @@ authorities could generate a Whisper identity and update it on the smart contrac
   - once the `documentToBeRevealed` has the minimum required signature any of the authorities can call `revealDocument(bytes32 revealedDocument, bytes32 SALT, bytes32 documentToBeRevealed)`
   - `if(keccak(SALT ^ revealedDocument) == documentToBeRevealed && hasEnoughSignatures(documentToBeRevealed)) {}` 
 
+- Documents Proof Registry : a MultiSig Registry where authorities can manage docproof smart contract / in order to listen to multiple docproof smart contract and events. ( it could be useful to see who is listening to the smart contracts or to the registry )
+  - need to standardize the events prototypes to listen to (between `RevealedDocument` and `NotarizedDocument`)
+
 - ??
