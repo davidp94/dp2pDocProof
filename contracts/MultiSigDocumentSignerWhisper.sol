@@ -5,7 +5,7 @@ pragma solidity ^0.4.0;
 // notarize a document identified by its hash (swarm or ipfs)
 // with multiple entities (authorities' addresses)
 // with minimum required signatures (multi signatures)
-contract MultiSigDocumentSigner {
+contract MultiSigDocumentSignerWhisper {
     
     mapping(address => bool) public authorities;
     
