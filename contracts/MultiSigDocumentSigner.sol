@@ -7,11 +7,11 @@ pragma solidity ^0.4.0;
 // with minimum required signatures (multi signatures)
 contract MultiSigDocumentSigner {
     
-    mapping(address => bool) authorities;
+    mapping(address => bool) public authorities;
     
-    mapping(bytes32 => SignatureCount) documentSignatureCounts;
+    mapping(bytes32 => SignatureCount) public documentSignatureCounts;
     
-    uint requiredMinSignature;
+    uint public requiredMinSignature;
     
     struct SignatureCount {
         mapping(address => bool) addressWhoHasSigned;
