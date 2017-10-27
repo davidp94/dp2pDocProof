@@ -28,7 +28,8 @@ contract MultiSigDocumentSignerWhisperReveal {
     event UnsignedDocument(bytes32 document, address signer);
     event DocumentWaitingToBeRevealed(bytes32 document);
     event RevealedDocument(bytes32 signedDocument, bytes32 documentToBeRevealed);
-    
+    event NotarizedDocument(bytes32 document);
+
     event NewAuthorityPubKey(address authority, string pubkey);
     
     modifier isAuthority() {
@@ -104,6 +105,7 @@ contract MultiSigDocumentSignerWhisperReveal {
         documentSignatureCounts[signedDocument].isRevealed = true;
         documentSignatureCounts[signedDocument].revealedDocument = documentToBeRevealed;
         RevealedDocument(signedDocument, documentToBeRevealed);
+        NotarizedDocument(documentToBeRevealed);        
     }
     
 
