@@ -100,14 +100,10 @@ contract MultiSigDocumentSignerWhisperReveal {
     }
     
     function revealDocument(bytes32 documentToBeRevealed, bytes32 salt, bytes32 signedDocument) public isAuthority hasSigned(signedDocument) isNotRevealed(signedDocument) {
-        if(keccak256(documentToBeRevealed ^ salt) == signedDocument){
-            documentSignatureCounts[signedDocument].isRevealed = true;
-            documentSignatureCounts[signedDocument].revealedDocument = documentToBeRevealed;
-            RevealedDocument(signedDocument, documentToBeRevealed);
-        }
-        else {
-            revert();
-        }
+        require(keccak256(documentToBeRevealed ^ salt) == signedDocument);
+        documentSignatureCounts[signedDocument].isRevealed = true;
+        documentSignatureCounts[signedDocument].revealedDocument = documentToBeRevealed;
+        RevealedDocument(signedDocument, documentToBeRevealed);
     }
     
 
