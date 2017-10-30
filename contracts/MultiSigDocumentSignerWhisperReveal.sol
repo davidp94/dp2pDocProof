@@ -28,7 +28,8 @@ contract MultiSigDocumentSignerWhisperReveal {
     event UnsignedDocument(bytes32 document, address signer);
     event DocumentWaitingToBeRevealed(bytes32 document);
     event RevealedDocument(bytes32 signedDocument, bytes32 documentToBeRevealed);
-    
+    event NotarizedDocument(bytes32 document);
+
     event NewAuthorityPubKey(address authority, string pubkey);
     
     modifier isAuthority() {
@@ -62,7 +63,7 @@ contract MultiSigDocumentSignerWhisperReveal {
     }
     
     
-    function MultiSigDocumentSignerWhisperReveal(address[] _authorities, uint minSignature) {
+    function MultiSigDocumentSignerWhisperReveal(address[] _authorities, uint minSignature) public {
         require(_authorities.length > 0);
         require(minSignature > 0 && minSignature <= _authorities.length);
         uint uniqueAuthorities = 0;
@@ -104,6 +105,7 @@ contract MultiSigDocumentSignerWhisperReveal {
         documentSignatureCounts[signedDocument].isRevealed = true;
         documentSignatureCounts[signedDocument].revealedDocument = documentToBeRevealed;
         RevealedDocument(signedDocument, documentToBeRevealed);
+        NotarizedDocument(documentToBeRevealed);        
     }
     
 
