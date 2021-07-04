@@ -63,7 +63,7 @@ contract MultiSigDocumentSignerWhisperReveal {
     }
     
     
-    function MultiSigDocumentSignerWhisperReveal(address[] _authorities, uint minSignature) {
+    function MultiSigDocumentSignerWhisperReveal(address[] _authorities, uint minSignature) public {
         require(_authorities.length > 0);
         require(minSignature > 0 && minSignature <= _authorities.length);
         uint uniqueAuthorities = 0;
