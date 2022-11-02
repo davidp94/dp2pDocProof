@@ -44,7 +44,7 @@
     "jest": "^21.0.2",
     "jsdom": "^9.2.1",
     "keymirror": "^0.1.1",
-    "mocha": "^2.5.3",
+    "mocha": "^10.1.0",
     "morgan": "^1.6.1",
     "node-sass": "^4.13.1",
     "offline-plugin": "^4.7.0",
